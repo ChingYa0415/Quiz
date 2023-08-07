@@ -18,6 +18,8 @@ struct FormTextView: View {
     @Binding var name: String
     @FocusState var isEditing: Bool
     
+    // MARK: - Body
+    
     var body: some View {
         VStack(alignment: .leading) {
             Text(title)
@@ -46,10 +48,15 @@ struct FormTextView: View {
         }
         .padding()
     }
+    
 }
 
+// MARK: - Previews
+
 struct FormTextView_Previews: PreviewProvider {
+    
     static var previews: some View {
         FormTextView(title: "姓名", name: .constant(""))
     }
+    
 }

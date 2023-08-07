@@ -59,6 +59,8 @@ struct QuizView: View {
         ["optionText": ["FUJIFILM X-T3", "FUJIFILM X-T4", "FUJIFILM X-T5", "FUJIFILM X-T6"]]
     ]
     
+    // MARK: - Body
+    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 30) {
@@ -110,7 +112,7 @@ struct QuizView: View {
                         Button {
                             index += 1
                         } label: {
-                            Text(index != 9 ? "下一題" : "完成作答")
+                            Text("下一題")
                                 .font(.headline)
                                 .fontDesign(.rounded)
                                 .fontWeight(.black)
@@ -156,8 +158,12 @@ struct QuizView: View {
     
 }
 
+// MARK: - Previews
+
 struct QuizView_Previews: PreviewProvider {
+    
     static var previews: some View {
-        QuizView(name: .constant(""))
+        QuizView(name: .constant("AMD"))
     }
+    
 }

@@ -19,6 +19,8 @@ struct FormOptionView: View {
     var optionText: String?
     var optionImage: String?
     
+    // MARK: - Body
+    
     var body: some View {
         HStack(alignment: .center, spacing: 10) {
             Button {
@@ -48,6 +50,8 @@ struct FormOptionView: View {
     }
     
 }
+
+// MARK: - Previews
 
 struct FormOptionView_Previews: PreviewProvider {
     static var previews: some View {

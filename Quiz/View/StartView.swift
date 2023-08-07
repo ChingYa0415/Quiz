@@ -19,6 +19,8 @@ struct StartView: View {
     @State var dates = Date()
     @State var selectedBloodType: Int = 0
     
+    // MARK: - Body
+    
     var body: some View {
         NavigationView {
             VStack(spacing: 10) {
@@ -90,8 +92,12 @@ struct StartView: View {
     
 }
 
+// MARK: - Previews
+
 struct ContentView_Previews: PreviewProvider {
+    
     static var previews: some View {
         StartView()
     }
+    
 }

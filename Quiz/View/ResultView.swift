@@ -15,6 +15,9 @@ struct ResultView: View {
     @Binding var name: String
     @Binding var answers: [String]
     @State var isPresented: Bool = false
+    @State var animate: Bool = false
+    
+    // MARK: - Body
     
     var body: some View {
         ScrollView {
@@ -62,6 +65,11 @@ struct ResultView: View {
                 }
             }
             .navigationBarBackButtonHidden()
+            .offset(x: animate ? 0 : 400)
+            .animation(.spring(response: 1.0, dampingFraction: 1.0, blendDuration: 1.0), value: animate)
+            .onAppear {
+                animate = true
+            }
             .sheet(isPresented: $isPresented) {
                 AnswerView(answers: $answers, score: 0)
                     .presentationDetents([.medium])
@@ -71,8 +79,12 @@ struct ResultView: View {
     
 }
 
+// MARK: - Previews
+
 struct ResultView_Previews: PreviewProvider {
+    
     static var previews: some View {
         ResultView(name: .constant("Riley"), answers: .constant([""]))
     }
+    
 }
