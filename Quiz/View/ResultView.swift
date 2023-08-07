@@ -15,7 +15,7 @@ struct ResultView: View {
     @Binding var name: String
     @Binding var answers: [String]
     @State var isPresented: Bool = false
-    @State var animate: Bool = false
+    @State var isAnimating: Bool = false
     
     // MARK: - Body
     
@@ -65,15 +65,16 @@ struct ResultView: View {
                 }
             }
             .navigationBarBackButtonHidden()
-            .offset(x: animate ? 0 : 400)
-            .animation(.spring(response: 1.0, dampingFraction: 1.0, blendDuration: 1.0), value: animate)
-            .onAppear {
-                animate = true
-            }
+            .opacity(isAnimating ? 1.0 : 0)
+            .offset(x: isAnimating ? 0 : 100)
+            .animation(.easeOut.delay(0.25), value: isAnimating)
             .sheet(isPresented: $isPresented) {
                 AnswerView(answers: $answers, score: 0)
                     .presentationDetents([.medium])
             }
+        }
+        .onAppear {
+            isAnimating = true
         }
     }
     
